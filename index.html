@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIORB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* PRIORB - Minimal CSS */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            padding: 40px 20px;
+            max-width: 640px;
+            margin: 0 auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            letter-spacing: 0;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 32px 0 16px 0;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        p {
+            margin-bottom: 8px;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 40px;
+        }
+
+        header p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Project Cards */
+        .project-card {
+            position: relative;
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: border-color 0.15s ease;
+        }
+
+        .project-card:hover {
+            border-color: #c0c0c0;
+        }
+
+        .project-card p {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        /* Status Labels */
+        .status-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            padding: 2px 6px;
+            border: 1px solid;
+            text-transform: lowercase;
+        }
+
+        .status-label.deprecated {
+            color: #666;
+            border-color: #d0d0d0;
+        }
+
+        .status-label.active {
+            color: #000;
+            border-color: #000;
+        }
+
+        /* Links */
+        a {
+            color: #000;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: opacity 0.15s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Link Buttons */
+        .link-btn {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 4px 8px;
+            border: 1px solid #d0d0d0;
+            color: #000;
+            background: #fff;
+            transition: all 0.15s ease;
+        }
+
+        .link-btn:hover {
+            background: #f8f8f8;
+            border-color: #b0b0b0;
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            margin: 40px 0;
+        }
+
+        .links {
+            font-size: 13px;
+        }
+
+        /* Email Protection */
+        .email {
+            display: inline-block;
+        }
+
+        .email-reveal {
+            font-family: inherit;
+            font-size: 12px;
+            padding: 2px 6px;
+            border: 1px solid #d0d0d0;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .email-reveal:hover {
+            background: #f8f8f8;
+            border-color: #b0b0b0;
+        }
+
+        .email-link {
+            font-size: 13px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        footer p {
+            color: #666;
+        }
+
+        footer a {
+            color: #666;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #000;
+            opacity: 1;
+        }
+
+        /* Subtle Details */
+        ::selection {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        /* Remove default focus outlines and add subtle ones */
+        :focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Subtle animation for interactive elements */
+        button, .link-btn {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Print styles for that extra attention to detail */
+        @media print {
+            body {
+                padding: 0;
+                max-width: none;
+            }
+            
+            .email-reveal {
+                display: none;
+            }
+            
+            .project-card {
+                break-inside: avoid;
+            }
+        }
+
+        /* Extra subtle details */
+        h1::after {
+            content: '_';
+            opacity: 0.2;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 0.2; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Subtle gradient on hover for project cards */
+        .project-card {
+            background: linear-gradient(to right, #fff 0%, #fff 100%);
+            background-size: 200% 100%;
+            background-position: 0% 0%;
+        }
+
+        .project-card:hover {
+            background: linear-gradient(to right, #fff 0%, #fafafa 100%);
+            background-size: 200% 100%;
+            animation: subtle-shift 0.3s ease forwards;
+        }
+
+        @keyframes subtle-shift {
+            to { background-position: -100% 0%; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>PRIORB</h1>
+            <p>Bochum, Germany</p>
+        </header>
+
+        <section class="projects">
+            <h2>Projects</h2>
+            
+            <article class="project-card">
+                <span class="status-label deprecated">deprecated</span>
+                <h3>SEEP</h3>
+                <p>Structured Expert Elicitation Platform. Open source software for collecting and aggregating expert judgments.</p>
+                <a href="https://github.com/priorb-source/seep" class="link-btn">github.com/priorb-source/seep</a>
+            </article>
+
+            <article class="project-card">
+                <span class="status-label deprecated">deprecated</span>
+                <h3>lightcone.news</h3>
+                <p>AI-enabled news aggregator with probabilistic forecasts. Helps readers navigate uncertainty.</p>
+                <a href="https://lightcone.news/" class="link-btn">lightcone.news</a>
+            </article>
+
+            <article class="project-card">
+                <span class="status-label active">active</span>
+                <h3>pixelbot.design</h3>
+                <p>AI-powered live website editor. Natural language interface for website creation.</p>
+                <a href="https://pixelbot.design" class="link-btn">pixelbot.design</a>
+            </article>
+        </section>
+
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Founder: Paul Schneider 
+                <span class="links">
+                    <a href="https://www.linkedin.com/in/paul--/">LinkedIn</a> · 
+                    <span class="email" data-user="paul" data-domain="priorb.com">
+                        <button class="email-reveal">Show email</button>
+                    </span>
+                </span>
+            </p>
+        </section>
+
+        <footer>
+            <p>
+                <a href="https://github.com/priorb-source">github.com/priorb-source</a> · 
+                <a href="https://www.linkedin.com/company/priorb">linkedin.com/company/priorb</a>
+            </p>
+        </footer>
+    </main>
+    
+    <script>
+        // PRIORB - Minimal JavaScript
+
+        // Email protection
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailElements = document.querySelectorAll('.email');
+            
+            emailElements.forEach(element => {
+                const user = element.dataset.user;
+                const domain = element.dataset.domain;
+                const button = element.querySelector('.email-reveal');
+                
+                if (button) {
+                    button.addEventListener('click', function() {
+                        const email = user + '@' + domain;
+                        const link = document.createElement('a');
+                        link.href = 'mailto:' + email;
+                        link.className = 'email-link';
+                        link.textContent = email;
+                        element.replaceWith(link);
+                        
+                        // Subtle feedback
+                        link.style.opacity = '0';
+                        setTimeout(() => {
+                            link.style.transition = 'opacity 0.3s ease';
+                            link.style.opacity = '1';
+                        }, 10);
+                    });
+                }
+            });
+            
+            // Subtle hover effect for project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(2px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+            
+            // Add subtle fade-in on load
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.4s ease';
+            
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 50);
+            });
+            
+            // Console easter egg for those who look
+            console.log('%cPRIORB', 'font-family: monospace; font-size: 20px; color: #000;');
+            console.log('Building things that matter.');
+        });
+    </script>
+</body>
+</html>
