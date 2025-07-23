@@ -257,6 +257,20 @@
             to { background-position: -100% 0%; }
         }
     </style>
+    <script src="config.js"></script>
+    <script>
+        if (window.GA_TRACKING_ID && window.GA_TRACKING_ID !== 'YOUR_GA_TRACKING_ID') {
+            const gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_TRACKING_ID;
+            document.head.appendChild(gtagScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', window.GA_TRACKING_ID);
+        }
+    </script>
 </head>
 <body>
     <main>
