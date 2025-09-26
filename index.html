@@ -74,16 +74,21 @@
             padding: 16px;
             margin-bottom: 12px;
             transition: border-color 0.15s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .project-card:hover {
             border-color: #c0c0c0;
+            text-decoration: none;
         }
 
         .project-card p {
             font-size: 13px;
             color: #333;
-            margin-bottom: 12px;
+            margin-bottom: 0;
         }
 
         /* Status Labels */
@@ -126,17 +131,13 @@
             display: inline-block;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            padding: 4px 8px;
-            border: 1px solid #d0d0d0;
             color: #000;
-            background: #fff;
-            transition: all 0.15s ease;
+            text-decoration: underline;
+            transition: opacity 0.15s ease;
         }
 
         .link-btn:hover {
-            background: #f8f8f8;
-            border-color: #b0b0b0;
-            opacity: 1;
+            opacity: 0.7;
         }
 
         /* Contact Section */
@@ -230,32 +231,14 @@
         }
 
         /* Extra subtle details */
-        h1::after {
-            content: '_';
-            opacity: 0.2;
-            animation: blink 1.5s infinite;
-        }
 
-        @keyframes blink {
-            0%, 50% { opacity: 0.2; }
-            51%, 100% { opacity: 0; }
-        }
-
-        /* Subtle gradient on hover for project cards */
+        /* Subtle hover for project cards */
         .project-card {
-            background: linear-gradient(to right, #fff 0%, #fff 100%);
-            background-size: 200% 100%;
-            background-position: 0% 0%;
+            background: #fff;
         }
 
         .project-card:hover {
-            background: linear-gradient(to right, #fff 0%, #fafafa 100%);
-            background-size: 200% 100%;
-            animation: subtle-shift 0.3s ease forwards;
-        }
-
-        @keyframes subtle-shift {
-            to { background-position: -100% 0%; }
+            background: #fafafa;
         }
     </style>
     <script src="config.js"></script>
@@ -277,32 +260,25 @@
     <main>
         <header>
             <h1>PRIORB</h1>
-            <p>Bochum, Germany</p>
         </header>
 
         <section class="projects">
-            <h2>Activities</h2>
 
-            <article class="project-card">
-                
-                <h3>PixelBot.Design</h3>
-                <p>The AI Web Design Studio.</p>
-                <a href="https://pixelbot.design" class="link-btn">pixelbot.design</a>
-            </article>
+            <a href="https://velay.ai" class="project-card">
+                <h3>velay.ai</h3>
+                <p>Transform your website instantly.</p>
+            </a>
             
-            <article class="project-card">
-                
+            <a href="https://github.com/priorb-source/seep" class="project-card">
                 <h3>SEEP</h3>
                 <p>Open Source Software Platform for collecting and aggregating expert judgments.</p>
-                <a href="https://github.com/priorb-source/seep" class="link-btn">github.com/priorb-source/seep</a>
-            </article>
+            </a>
 
-            <article class="project-card">
+            <a href="https://lightcone.news/" class="project-card">
                 <span class="status-label deprecated">deprecated</span>
                 <h3>lightcone.news</h3>
-                <p>News aggregator with probabilistic forecasts. </p>
-                <a href="https://lightcone.news/" class="link-btn">lightcone.news</a>
-            </article>
+                <p>News aggregator with probabilistic forecasts.</p>
+            </a>
 
             
         </section>
@@ -321,7 +297,7 @@
 
         <footer>
             <p>
-                <a href="https://github.com/priorb-source">github.com/priorb-source</a> · 
+                <a href="https://github.com/priorb-source">github.com/priorb-source</a> |
                 <a href="https://www.linkedin.com/company/priorb">linkedin.com/company/priorb</a>
             </p>
         </footer>
@@ -358,17 +334,7 @@
                 }
             });
             
-            // Subtle hover effect for project cards
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateX(2px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateX(0)';
-                });
-            });
+            // Project cards - no movement on hover
             
             // Add subtle fade-in on load
             document.body.style.opacity = '0';
